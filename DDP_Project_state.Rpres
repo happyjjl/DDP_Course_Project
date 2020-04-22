@@ -1,0 +1,42 @@
+Developing Data Products Course Project
+========================================================
+author: jin.jiangli
+date: 22/4/2020
+autosize: true
+
+Overview of Shiny Application
+========================================================
+
+This Shiny application allows a user to learn the location of all the states of the United States of America. A user can select a state from a drop down list and that selected state is then displayed on a blank map in light pink.
+
+
+How the Shiny Application Works
+========================================================
+
+- The application is written in R as a Shiny Web App which is a web application framework
+- The source code contains two separate files which are initilized upon creation of a Shiny Web App in R Studio: the **server.R** file and the **ui.R** file
+- The **server.R** file contains the server logic for the application
+- The **ui.R** file contains the logic for defining the user interface. This file makes use of the 'sidebarLayout' template
+- The Shiny application uses the **maps** and **mapdata** libraries to display a map of the United States as well as populate the drop-down
+- The application is hosted on R Studio's cloud server for Shiny applications, Shinyapps.io
+
+How to Use the Shiny Application
+========================================================
+
+- Select a U.S. state from the drop down list 
+- The selected state is then displayed on the U.S. map and is filled in with a light pink color
+
+
+- The application is hosted here: https://happyjjl.shinyapps.io/state/
+- My GitHub is located here: https://github.com/happyjjl/DDP_Course_Project
+
+R Code to Display U.S. Map
+========================================================
+
+```{r map, echo=TRUE, message=FALSE}
+library(maps)
+library(mapdata)
+library(ggplot2)
+states <- map_data("state")
+ggplot(data = states) + geom_polygon(aes(x = long, y = lat, group = group), fill = "white", color = "black") + coord_fixed(1.5)
+```
